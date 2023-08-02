@@ -7,8 +7,11 @@ const observer = new MutationObserver(function(mutations_list) {
 });
 
 const render_house_changes = () => {
-	let house_icon = document.querySelector('[src="/solaredge-web/common/img/sem/load/Active.svg"]');
-	house_icon.style.display = "none"
+	let house_icon = document.querySelector('[src="/solaredge-web/common/img/sem/load/Active.svg"]') ||  document.querySelector('[src="https://raw.githubusercontent.com/ASomerN/solar_edge_sctctr/main/scout.png"]')
+	//house_icon.style.display = "none"
+	house_icon.src = "https://raw.githubusercontent.com/ASomerN/solar_edge_sctctr/main/scout.png"
+	house_icon.style = "width: 25vw !important; height: auto;";
+
 	let comparative_energy_panel = document.getElementById("se-comparative-energy-panel");
 	comparative_energy_panel.style.width = "45%";
 	
@@ -62,28 +65,7 @@ const set_backdrop = () => {
 	// id = se-overview-panel-innerCt
 	
 	// id=se-comparative-energy-panel
-	let comparative_energy_panel = document.getElementById("se-comparative-energy-panel");
-	comparative_energy_panel.style.width = "45%";
-	
-	let power_energy_panel = document.getElementById("power_energy_panel");
-	power_energy_panel.style.right = "2.5vw";
-	power_energy_panel.style.top = "0px";
-	
-	document.querySelector(dashboard_left).style.width = "45%";
-	
-	var power_box = document.querySelector(".se-double-power-box")
-	var divContainer = power_box.parentElement;
-	divContainer.style.width = "45vw";
-	divContainer.parentElement.style.width = "45vw";
-	divContainer.parentElement.parentElement.style.width = "45vw";
-	divContainer.parentElement.parentElement.parentElement.style.width = "45vw";
-		
-	
-	divContainer.childNodes[0].style.width = "8vw";
-	divContainer.childNodes[2].style.width = "8vw";
-	divContainer.childNodes[2].style.left = "37vw";
-	divContainer.childNodes[1].style.width = "29vw";
-	divContainer.childNodes[1].style.left = "8vw";
+	render_house_changes();
 
 }
 
